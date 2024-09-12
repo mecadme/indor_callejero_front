@@ -1,0 +1,72 @@
+.header {
+  background-color: #ede0e0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+.container-fluid {
+  background-color: #3e78bc;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 70px;
+}
+
+#navbarNav ul li {
+  display: contents;
+}
+
+#navbarNav ul li :hover {
+  color: #32163b;
+  transition: color 0.3s ease-in-out;
+  
+  transform: scale(1.05);
+}
+#navbarNav ul li a {
+  color: #ede0e0;
+}
+
+.navbar-brand {
+  display: flex;
+  justify-content: center;
+  padding: 5px;
+}
+
+.logo {
+  max-width: 90%;
+  padding: 0.2rem;
+  margin-left: 5px;
+  filter: grayscale(100) brightness(39);
+}
+
+.logo:hover {
+  filter: grayscale(0) brightness(100);
+  transform: scale(1.1);
+}
+
+.material-symbols-outlined {
+  color: #3e78bc;
+  font-size: 100%;
+  margin: 0 50px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+}
+
+.material-symbols-outlined:hover {
+  color: #ede0e0;
+  
+  transform: scale(1.1);
+}
+
+.btn.btn-outline-primary {
+  border-radius: 30px;
+  background-color: #ede0e0;
+  font-weight: bold;
+  text-align: center;
+}
+
+.btn.btn-outline-primary:hover {
+  background-color: #32163b;
+}

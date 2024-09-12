@@ -1,10 +1,11 @@
 import ComingSoon from "./components/ComingSoon";
 import "./App.css";
+import Header from "./components/Header";
 
 function App() {
   return (
     <div>
-      <ComingSoon />
+      <Header />
     </div>
   );
 }

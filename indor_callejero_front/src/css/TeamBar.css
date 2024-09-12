@@ -1,0 +1,34 @@
+.teams_logo_list {
+    display: flex;
+    flex-wrap: nowrap; /* Los elementos no se envuelven, se mantienen en una sola fila */
+    overflow-x: auto; /* Habilita el scroll horizontal */
+    padding: 10px 0;
+    list-style-type: none; 
+  }
+  
+  .teams_logo_list::-webkit-scrollbar {
+    display:none; /* Oculta la barra de desplazamiento en Chrome, Safari, etc. */
+  }
+  
+  .logo_team {
+    max-width: 80px; /* Ajusta este tamaño según tus necesidades */
+    margin: 0 15px; /* Espaciado entre los logos */
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .logo_team:hover {
+    transform: scale(1.1); /* Zoom en los logos al pasar el ratón */
+  }
+  
+  .team_container-fluid {
+    white-space: nowrap; /* Evita que los elementos se envuelvan en múltiples líneas */
+    padding: 10px;
+  }
+  
+  /* Media Queries para pantallas pequeñas */
+  @media (max-width: 768px) {
+    .teams_logo_list {
+      scroll-behavior: smooth; /* Suaviza el desplazamiento en pantallas pequeñas */
+    }
+  }
+  
