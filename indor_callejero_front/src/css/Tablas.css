@@ -1,0 +1,34 @@
+.tablas{
+    background-color: #6B8EC8;
+    border-radius: 1rem;
+    padding: 0;
+    grid-column: 1;
+  }
+
+.grupo {
+    text-align: center;
+    color: #ffffff;
+    border-radius: 1rem;
+    padding: 1rem;
+    justify-content: space-around;
+  }
+
+.list-group{
+    font-size: 1.5rem;
+    padding: 0.1rem;
+    margin: 0.1rem;
+}
+
+.standings-title {
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    margin: 0;
+    color: #ffffff;
+    background-color: #3778BC;
+    border-radius: 1rem 1rem 0 0;
+    position: relative ;
+    padding: 2rem;
+
+
+}

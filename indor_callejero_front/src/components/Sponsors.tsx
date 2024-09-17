@@ -7,7 +7,7 @@ interface Sponsor {
   logoUrl: string;
 }
 
-const Footer: React.FC = () => {
+const Sponsors: React.FC = () => {
   const [sponsors, setSponsors] = useState<Sponsor[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
@@ -90,4 +90,4 @@ const Footer: React.FC = () => {
   );
 };
 
-export default Footer;
+export default Sponsors;

@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-
-import "../css/EquipoSemana.css";
+import "../../css/EquipoSemana.css";
 
 interface Player {
   id: number;
@@ -10,7 +9,20 @@ interface Player {
   imageUrl: string; // En caso de que tenga imagen
 }
 
+// Mapeo de las áreas de grid según la posición del jugador
+const gridPositionMap = {
+  Portero: "portero",
+  Defensa1: "defensa1",
+  Defensa2: "defensa2",
+  Medio1: "medio1",
+  Medio2: "medio2",
+  Delantero: "delantero",
+};
+
 function EquipoSemana() {
+  let defensaCount = 0;
+  let medioCount = 0;
+
   const [team, setTeam] = useState<Player[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
@@ -18,12 +30,6 @@ function EquipoSemana() {
   // Simulación de llamada a la API
   const fetchTeam = async () => {
     try {
-      // setLoading(true);
-      // const response = await fetch("https://api.example.com/team-of-the-week"); // Cambia a tu API
-      // if (!response.ok) throw new Error("Error al obtener los datos");
-      // const data = await response.json();
-      // setTeam(data.players); // Asumiendo que la API devuelve un array de jugadores
-      // setLoading(false);
       const data = {
         players: [
           {
@@ -35,13 +41,13 @@ function EquipoSemana() {
           {
             id: 2,
             name: "Cristiano Ronaldo",
-            position: "Delantero",
+            position: "Defensa",
             imageUrl: "https://via.placeholder.com/60",
           },
           {
             id: 3,
             name: "Sergio Ramos",
-            position: "Defensor",
+            position: "Defensa",
             imageUrl: "https://via.placeholder.com/60",
           },
           {
@@ -65,8 +71,7 @@ function EquipoSemana() {
         ],
       };
 
-      // Simulación de una API que devuelve un array de jugadores
-      setTeam(data.players);
+      setTeam(data.players); // Simulación de una API que devuelve un array de jugadores
       setLoading(false);
     } catch (error) {
       setError("No se pudo cargar el equipo");
@@ -74,7 +79,6 @@ function EquipoSemana() {
     }
   };
 
-  // Efecto para hacer la llamada a la API
   useEffect(() => {
     fetchTeam();
   }, []);
@@ -92,22 +96,45 @@ function EquipoSemana() {
       <h2 className="text-center mb-4">Equipo de la Semana</h2>
       <div className="cancha justify-content-center">
         <div className="field">
-          <div className="row_player">
-            {team.map((player) => (
-              <div
-              className={`col-4 player-${player.id}`}
-                key={player.id}
-              >
-                <img
-                  src={player.imageUrl}
-                  alt={player.name}
-                  className="img-fluid rounded-circle mb-2"
-                  style={{ width: "50px", height: "50px" }}
-                />
-                <span>{player.name}</span>
-                <small className="text-muted">{player.position}</small>
-              </div>
-            ))}
+          <div className="team-grid">
+            {team.map((player) => {
+              let gridArea = "";
+
+              // Asignar el área del grid dependiendo de la posición del jugador
+              if (player.position === "Portero") {
+                gridArea = gridPositionMap.Portero;
+              } else if (player.position === "Defensa") {
+                defensaCount++;
+                gridArea =
+                  gridPositionMap[
+                    `Defensa${defensaCount}` as keyof typeof gridPositionMap
+                  ];
+              } else if (player.position === "Mediocampista") {
+                medioCount++;
+                gridArea =
+                  gridPositionMap[
+                    `Medio${medioCount}` as keyof typeof gridPositionMap
+                  ];
+              } else if (player.position === "Delantero") {
+                gridArea = gridPositionMap.Delantero;
+              }
+
+              return (
+                <div
+                  key={player.id}
+                  className={`player player-${player.id}`}
+                  style={{ gridArea }}
+                >
+                  <img
+                    src={player.imageUrl}
+                    alt={player.name}
+                    className="img-player"
+                  />
+                  <span>{player.name}</span>
+                  <small className="text-muted">{player.position}</small>
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>

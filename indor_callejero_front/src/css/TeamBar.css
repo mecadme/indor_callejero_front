@@ -30,6 +30,7 @@
 
 .logo_team:hover {
   transform: translate(0, -3px);
+  cursor: pointer;
 } 
 
 .team_container-fluid {

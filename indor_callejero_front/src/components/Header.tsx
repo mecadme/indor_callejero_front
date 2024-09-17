@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import logo from "../assets/indor_callejero_logo.png"; 
 import TeamsBarComponent from "./TeamsBarComponent";
 import "../css/Header.css";
@@ -21,86 +22,109 @@ const data = {
   };
   
 
-export default function Header() {
-  return (
-    <header className="header">
-      <TeamsBarComponent content={data.content} getAllTeams={data.getAllTeams} />
-
-      <nav className="navbar navbar-expand-lg navbar-light bg-light">
-        <div className="container-fluid">
-          <a 
-            className="navbar-brand" 
-            href="https://www.facebook.com/IndorCallejeroAzogues" 
-            target="_blank" 
-            rel="noopener noreferrer"
-          >
-            <img 
-              src={logo} 
-              alt="Logo de Indor Callejero" 
-              className="logo" 
-              width="50" 
-            />
-          </a>
-          
-          <button
-            className="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarNav"
-            aria-controls="navbarNav"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span className="navbar-toggler-icon"></span>
-          </button>
-
-          <div className="collapse navbar-collapse" id="navbarNav">
-            <ul className="navbar-nav ms-auto">
-              <li className="nav-item">
-                <a 
-                  className="nav-link" 
-                  href="http://localhost:3000/PROYECTO_CALLEJERO" 
-                  target="_blank"
-                >
-                  PROYECTO CALLEJERO
-                </a>
-              </li>
-              <li className="nav-item">
-                <a 
-                  className="nav-link" 
-                  href="http://localhost:3000/TODO_LO_QUE_DEBES_SABER" 
-                  target="_blank"
-                >
-                  TODO LO QUE DEBES SABER
-                </a>
-              </li>
-              <li className="nav-item">
-                <a 
-                  className="nav-link" 
-                  href="http://localhost:3000/PALMARES_HISTORICO" 
-                  target="_blank"
-                >
-                  PALMARÉS HISTÓRICO
-                </a>
-              </li>
-              <li className="nav-item">
-                <a 
-                  className="nav-link" 
-                  href="http://localhost:3000/PRONOSTICOS" 
-                  target="_blank"
-                >
-                  PRONÓSTICO DE RESULTADOS
-                </a>
-              </li>
-              <li className="nav-item">
-                <button className="btn btn-outline-primary">
-                  <span className="material-symbols-outlined"> Iniciar Sesión </span>
-                </button>
-              </li>
-            </ul>
+  export default function Header() {
+    // Estado de sesión. Simulamos que hay un usuario autenticado con su foto de perfil.
+    const [user, setUser] = useState({
+      isAuthenticated: false, // Puedes cambiar esto para simular un usuario no autenticado
+      profilePicture: 'https://cdn-icons-png.flaticon.com/512/147/147144.png', // URL de la imagen del perfil del usuario
+      name: 'John Doe',
+    });
+  
+    return (
+      <header className="header">
+        <TeamsBarComponent content={data.content} getAllTeams={data.getAllTeams} />
+  
+        <nav className="navbar navbar-expand-lg navbar-light bg-light">
+          <div className="container-fluid">
+            <a 
+              className="navbar-brand" 
+              href="https://www.facebook.com/IndorCallejeroAzogues" 
+              target="_blank" 
+              rel="noopener noreferrer"
+            >
+              <img 
+                src={logo} 
+                alt="Logo de Indor Callejero" 
+                className="logo" 
+                width="50" 
+              />
+            </a>
+  
+            <button
+              className="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarNav"
+              aria-controls="navbarNav"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span className="navbar-toggler-icon"></span>
+            </button>
+  
+            <div className="collapse navbar-collapse" id="navbarNav">
+              <ul className="navbar-nav ms-auto">
+                <li className="nav-item">
+                  <a 
+                    className="nav-link" 
+                    href="http://localhost:3000/PROYECTO_CALLEJERO" 
+                    target="_blank"
+                  >
+                    PROYECTO CALLEJERO
+                  </a>
+                </li>
+                <li className="nav-item">
+                  <a 
+                    className="nav-link" 
+                    href="http://localhost:3000/TODO_LO_QUE_DEBES_SABER" 
+                    target="_blank"
+                  >
+                    TODO LO QUE DEBES SABER
+                  </a>
+                </li>
+                <li className="nav-item">
+                  <a 
+                    className="nav-link" 
+                    href="http://localhost:3000/PALMARES_HISTORICO" 
+                    target="_blank"
+                  >
+                    PALMARÉS HISTÓRICO
+                  </a>
+                </li>
+                <li className="nav-item">
+                  <a 
+                    className="nav-link" 
+                    href="http://localhost:3000/PRONOSTICOS" 
+                    target="_blank"
+                  >
+                    PRONÓSTICO DE RESULTADOS
+                  </a>
+                </li>
+  
+                {/* Aquí mostramos el botón de "Iniciar Sesión" o la foto de perfil según el estado de autenticación */}
+                <li className="nav-item">
+                  {user.isAuthenticated ? (
+                    <div className="nav-link">
+                      <span className='user-name'>{user.name}</span>
+                      <img 
+                        src={user.profilePicture} 
+                        alt={user.name} 
+                        className="profile-picture rounded-circle" 
+                        width="70" 
+                        height="60"
+                        style={{ objectFit: 'cover' }}
+                      />
+                    </div>
+                  ) : (
+                    <button className="btn btn-outline-primary">
+                      <span className="material-symbols-outlined">Iniciar Sesión</span>
+                    </button>
+                  )}
+                </li>
+              </ul>
+            </div>
           </div>
-        </div>
-      </nav>
-    </header>
-  );
-}
+        </nav>
+      </header>
+    );
+  }

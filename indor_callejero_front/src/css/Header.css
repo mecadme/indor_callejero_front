@@ -8,24 +8,24 @@
 
 .navbar.navbar-expand-lg.navbar-light.bg-light {
   padding: 0px;
-  }
-
+}
 
 .container-fluid {
   background-color: #3e78bc;
-  justify-content: space-around;
 }
 
 .navbar-nav.ms-auto {
   padding: 0.5rem;
-  justify-content: space-around;
 }
 
 #navbarNav ul li {
-  font-size: 1rem;
+  font-size: 1.5rem;
   font-weight: bold;
-  display: flex;
   padding: 0 5rem;
+  margin: 0 1.1rem;
+  border: 0;
+  display: flex;
+  align-items: center;
 }
 
 #navbarNav ul li :hover {
@@ -56,7 +56,7 @@
 
 .material-symbols-outlined {
   color: #3e78bc;
-  font-size: 100%;
+  font-size: 1.65rem;
   margin: 0 50px;
   font-weight: bold;
   cursor: pointer;
@@ -65,7 +65,6 @@
 
 .material-symbols-outlined:hover {
   color: #ede0e0;
-
   transform: scale(1.1);
 }
 
@@ -78,4 +77,19 @@
 
 .btn.btn-outline-primary:hover {
   background-color: #32163b;
+}
+.nav-link {
+  margin-top: 0.5rem;
+}
+
+.user-name {
+  color: #000000;
+  font-size: 2rem;
+  margin-right: 1.5rem;
+}
+
+.profile-picture.rounded-circle {
+  width: 75px;
+  height: 60px;
+  object-fit: cover;
 }

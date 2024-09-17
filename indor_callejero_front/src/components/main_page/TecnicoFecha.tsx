@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import "../../css/TecnicoFecha.css";
 
 interface Tecnico {
   id: number;
@@ -54,7 +55,7 @@ const TecnicoFecha: React.FC = () => {
   }
 
   return (
-    <div className="tecnico-fecha container">
+    <div className="week-coach container">
       <h2 className="text-center mb-4">Técnico de la Fecha</h2>
       <div className="row_coach">
         {tecnicos.length > 0 ? (

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import "../../css/Videos.css";
 
 interface Video {
   id: number;
@@ -15,12 +16,6 @@ const Videos: React.FC = () => {
   // Simulación de llamada a la API para obtener los videos
   const fetchVideosData = async () => {
     try {
-      // setLoading(true);
-      // const response = await fetch('https://api.example.com/videos'); // Cambia a tu API real
-      // if (!response.ok) throw new Error('Error al obtener los videos');
-      // const data = await response.json();
-      // setVideos(data);
-      // setLoading(false);
       setLoading(true);
 
       // Datos simulados (puedes reemplazar esto con la llamada a la API real)
@@ -79,7 +74,7 @@ const Videos: React.FC = () => {
                 <iframe
                   width="100%"
                   height="315"
-                  src={video.url}
+                  src={`https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(video.url)}`}
                   title={video.title}
                   frameBorder="0"
                   allowFullScreen
